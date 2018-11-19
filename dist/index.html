@@ -1,1 +1,51 @@
-34sddfsdf
+{% extends "_layout/site" %}
+{# 
+    AUTHOR          : Agence Zel
+    CREATE DATE     : 10/09/2018
+    LAST UPDATE     : -
+    PURPOSE         : FUT IDEAL - SITE| LAYOUT THEME
+    CURRENT VERSION : 0.0     
+#}
+
+{# DECLARATION #}
+
+{# ASIGNATION #}
+
+{% set entries = craft.entries.section('homeSection').all() %}
+{# CODE #}
+
+    {% block content %}
+        {% nav entry in entries %}
+            {% if entry.type == 'about'%}
+                <div class="o-section c-banner">
+                    <div class="o-wrapper">
+                        <div class="c-banner_bg" style="background: url('{{entry.headerImage.one().url()}}')">
+                            <div class="c-banner_info">
+                            <p class="c-banner_title">{{entry.headerTitleOne}}<br>{{entry.headerTitleTwo}}</p>
+                            <p class="c-banner_description">{{entry.headerDescription}}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            {% elseif entry.type == 'ourHistory'%}
+                <div class="o-section c-our-history">
+                    <div class="o-wrapper">
+
+                        <div class="c-our-history_wrap">
+                            <div class="o-wrapper -one">
+                            <div class="o-layout">
+                                <div class="o-layout_item u-2/5">
+                            <h2>{{entry.title}}</h2>
+                            </div>
+                            <div class="o-layout_item u-3/5">
+                                {{entry.communContent}}
+                            </div>
+                            </div>
+                            
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endif %}            
+        {% endnav %}        
+    {% endblock %}

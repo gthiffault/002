@@ -1,0 +1,56 @@
+
+{# 
+	AUTHOR         	: Agence Zel
+	CREATE DATE 	: 10/09/2018
+	LAST UPDATE 	: -
+	PURPOSE     	: FUT IDEAL - SITE| LAYOUT THEME
+	CURRENT VERSION : 0.0     
+#}
+
+{# DECLARATION #}
+
+{# ASIGNATION #}
+	{% set entries = craft.entries.section('homeSection').all() %}
+{# CODE #}
+
+	<!doctype html>
+
+		<html lang="{{craft.app.language}}">
+			<head>
+				<link href="https://fonts.googleapis.com/css?family=Montserrat|PT+Sans|Roboto" rel="stylesheet">
+				<link rel="stylesheet" href="{{ craft.app.sites.primarySite.baseUrl }}assets/css/app.css">
+			</head>
+
+			<body id="barba-wrapper">
+		
+				<header class="c-header">
+
+					<div class="o-wrapper">
+						<div class="c-header_nav">
+							<div class="c-header_nav_item -logo">
+								<img src="{{ craft.app.sites.primarySite.baseUrl }}assets/images/logos/synatec_logo.svg">
+							</div>
+							<div class="o-list-bare c-header_nav_item -menu">
+								<ul class="c-header_menu">
+		    						{% nav entry in entries %}
+		        						<li>
+		            						<a href="{{ entry.url }}">{{ entry.title }}</a>
+								        </li>
+		    						{% endnav %}
+		    						<li class="c-header_nav_separator"></li>	
+		    						<li><a>450-377-3344</a></li>
+		    						<li><a><img src="{{ craft.app.sites.primarySite.baseUrl }}assets/images/icons/synatec-facebook.svg"></a></li>
+								</ul>		
+							</div>
+						</div>			
+					</div>				
+				</header>
+				<main class="c-main">
+					{% block content %}{% endblock %}	
+				</main>
+			</body>
+		</html>					
+
+
+
+

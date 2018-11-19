@@ -19,12 +19,8 @@ var gulp = require('gulp'),
 
 gulp.task('003', function() {
 	browser.init({
-			injectChanges: true,
-			server: {
-				baseDir: 'dist'
-			}
+
 		});
-	gulp.watch('templates/*.html', ['watch-html']);
 	gulp.watch('web/assets/css/inuitcss/**/*.scss',['sass']);
 	});
 
@@ -41,10 +37,7 @@ gulp.task('html', function() {
 });
 
 
-gulp.task('watch-html', ['html'], function(done) {
-	browser.reload();
-	done();
-	});
+
 
 
 gulp.task('sass', function() {
@@ -60,4 +53,4 @@ outputStyle: 'expanded'
 	})
 
 
-gulp.task('default', ['html', 'sass']);	
+gulp.task('default', ['html', 'sass','003']);	
